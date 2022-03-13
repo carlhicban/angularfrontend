@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-5 mx-auto mt-5">
+        <div class="card">
+            <div class="card-header">
+                <span>Course</span>
+                <button type="button" class="btn btn-primary float-right" (click)="openModal(template)">Add Course</button>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <th>#</th>
+                        <th>Student</th>
+                        <th>Course</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let studentCourse of studentCourses;index as i">
+                            <td>{{i+1}}</td>
+                            <td>{{studentCourse.cl_firstname}} {{studentCourse.cl_lastname}}</td>
+                            <td>{{studentCourse.cl_course_name}}</td>
+                            <td>
+                                <button class="btn btn-warning" (click)="openModal(template,studentCourse)">Edit</button>
+                                <button class="btn btn-danger"  (click)="delete(studentCourse)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalTitle}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body">
+    <div *ngIf="isEdit;else not">
+        <div class="form-group" >
+            <label for="student">Student</label>
+            <!-- [formControl]="student" -->
+            <input type="number" name="" id="" class="form-control" [formControl]="student" hidden/>
+            <input type="text" name="" id="" class="form-control" value="{{studentName}}" readonly/>
+             
+        </div>
+        <div class="form-group">
+            <label for="course">Course</label>
+            <!-- [formControl]="course" -->
+             
+            <select name="" id="" class="form-control" [formControl]="course">
+                <option *ngFor="let course of courses" value="{{course.id}}" >{{course.cl_course_name}}</option>
+            </select>
+        </div>
+    </div>
+    <ng-template #not>
+        <div class="form-group" >
+            <label for="student">Student</label>
+            <!-- [formControl]="student" -->
+            <select name="" id="" class="form-control" [formControl]="student">
+                <option *ngFor="let student of students" value="{{student.id}}">{{student.cl_firstname}} {{student.cl_lastname}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="course">Course</label>
+            <!-- [formControl]="course" -->
+            <select name="" id="" class="form-control" [formControl]="course">
+                <option *ngFor="let course of courses" value="{{course.id}}" >{{course.cl_course_name}}</option>
+            </select>
+        </div>
+    </ng-template>
+    
+     
+  </div>
+  <button type="button" class="btn btn-primary" (click)="modalRef?.hide();save()">{{btnTitle}}</button>
+</ng-template>
