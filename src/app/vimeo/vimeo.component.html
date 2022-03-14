@@ -1,0 +1,21 @@
+<div *ngFor="let video of videos">
+    <div class="row">
+        <div class="col-md-8 mx-auto m-5">
+            <div class="card" style="box-shadow:2px 2px 4px rgba(0,0,0,.2);">
+                <div class="card-header text-center">
+                    <h4 class="">{{video.title}}</h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <iframe [src]="video.url | vimeo" width="100%" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <h6>Channel Creator: <span>{{video.user_name}}</span></h6>
+                     
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

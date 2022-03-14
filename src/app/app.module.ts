@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CourseComponent } from './course/course.component';
 import { StudentCourseComponent } from './student-course/student-course.component';
 import { LoginComponent } from './login/login.component';
+import { VimeoComponent } from './vimeo/vimeo.component';
+import { VimeoPipe } from './pipe/vimeo.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     CourseComponent,
     StudentCourseComponent,
-    LoginComponent
+    LoginComponent,
+    VimeoComponent,
+    VimeoPipe
   ],
   imports: [
     BrowserModule,

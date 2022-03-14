@@ -5,6 +5,7 @@ import {StudentComponent} from './student/student.component';
 import {CourseComponent} from './course/course.component';
 import {StudentCourseComponent} from './student-course/student-course.component';
 import { LoginComponent } from './login/login.component';
+import { VimeoComponent } from './vimeo/vimeo.component';
 const routes:Routes=[
   {
     path:'student',
@@ -17,6 +18,10 @@ const routes:Routes=[
   {
     path:'student-course',
     component:StudentCourseComponent
+  },
+  {
+    path:'vimeo',
+    component:VimeoComponent
   },
   {
     path:'login',
